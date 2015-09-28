@@ -46,7 +46,16 @@ usersRoute.post('/', function(req, res){
 })
 
 // UPDATE
-
+usersRoute.put('/edit/:id', function(req, res) {
+  console.log('edit user route');
+  console.log(req.body);
+  console.log(req.params.id);
+  var params = req.body;
+  User.findByIdAndUpdate(req.params.id, params, function(err, user){
+      if (err) console.log(err)
+      res.json(user)
+  })
+})
 
 // DELETE
 
