@@ -58,5 +58,12 @@ usersRoute.put('/edit/:id', function(req, res) {
 })
 
 // DELETE
+usersRoute.delete('/:id', function(req, res) {
+  console.log('delete user route');
+  User.findByIdAndRemove(req.params.id, function(err, user) {
+    if (err) console.log(err);
+    res.json(user)
+  })
+})
 
 module.exports = usersRoute;
